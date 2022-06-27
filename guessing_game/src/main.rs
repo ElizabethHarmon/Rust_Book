@@ -1,7 +1,7 @@
+use colored::Colorize;
 use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
-use colored::Colorize;
 
 fn main() {
     println!("Guess the number!");
