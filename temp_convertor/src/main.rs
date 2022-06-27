@@ -1,31 +1,38 @@
+use anyhow::{Context, Result};
 use std::io;
 
-fn main() {
+fn main() -> Result<()> {
     println!("Do you want to want to...");
     println!("1) Convert Celsius to Farenheit, or 2) Convert Farenheit to Celsius?");
-    println!("Please input 1 or 2: ");
 
-    let mut input = String::new();
+    let to_farenheit = loop {
+        println!("Please input 1 or 2: ");
+        let mut input = String::new();
 
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read line");
+        io::stdin()
+            .read_line(&mut input)
+            .context("Failed to read line")?;
 
-    let input: u8 = input.trim().parse().expect("Please type a number!");
+        match input.trim().parse::<u8>() {
+            Ok(1) => break true,
+            Ok(2) => break false,
+            _ => eprintln!("Only 1 and 2 are valid answers"),
+        }
+    };
 
-    if input == 1 {
+    if to_farenheit {
         let choice = "Celsius";
         let x = read_input(choice);
         let output = c_to_f(x);
         println!("{}C = {}F", x, output);
-    } else if input == 2 {
+    } else {
         let choice = "Farenheit";
         let x = read_input(choice);
         let output = f_to_c(x);
         println!("{}F = {}C", x, output);
-    } else {
-        println!("Please enter 1 or 2");
     }
+
+    Ok(())
 }
 
 fn read_input(choice: &str) -> f64 {
