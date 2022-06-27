@@ -28,9 +28,7 @@ fn main() {
     }
 }
 
-fn read_input(choice :&str) -> f64 {
-    
-    
+fn read_input(choice: &str) -> f64 {
     loop {
         println!("Please input a {} value: ", choice);
 
@@ -50,9 +48,9 @@ fn read_input(choice :&str) -> f64 {
 }
 
 fn c_to_f(number: f64) -> f64 {
-        number * 9.0 / 5.0 + 32.0
-    }
+    number * 9.0 / 5.0 + 32.0
+}
 
 fn f_to_c(number: f64) -> f64 {
-        (number - 32.0) * 5.0 / 9.0
+    (number - 32.0) * 5.0 / 9.0
 }
