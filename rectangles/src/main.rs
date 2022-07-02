@@ -1,3 +1,5 @@
+// chapter 5 examples
+
 #[derive(Debug)]
 struct Rectangle {
     width: u32,
